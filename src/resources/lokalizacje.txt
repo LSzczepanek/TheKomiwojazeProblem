@@ -1,0 +1,8 @@
+Kutno                   19.22        52.14
+Lodz 					19.33        51.46
+Zgierz                  19.25        51.52
+Leczyca                 19.12        52.03
+Piatek                  19.28        52.04
+Witonia                 19.18        52.08
+Strykow                 19.35        51.54
+Ozorkow                 19.17        51.58
