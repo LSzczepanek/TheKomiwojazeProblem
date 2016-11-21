@@ -10,7 +10,7 @@ public class Route implements Comparable<Route> {
 	
 	final City DEFAULT_CITY ;
 	City[] routeAsArray;
-	static List<City[]> listOfRoutes = new ArrayList<City[]>();
+	static List<City[]> listOfRoutes = new ArrayList<City[]>(); // musze to wynesc na zewnatez oraz wszytskei metody ktore sa z tym zwiazane
 	static int ilosc =0;
 	private static double distanceOfTheRoute;
 
