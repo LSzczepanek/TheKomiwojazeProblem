@@ -1,7 +1,7 @@
 package solution;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.List;
 
 public class Route implements Comparable<Route> {
@@ -9,34 +9,50 @@ public class Route implements Comparable<Route> {
 	
 	
 	final City DEFAULT_CITY ;
-	City[] route;
-	static HashSet<City[]> listOfRoutes = new HashSet<City[]>();
+	City[] routeAsArray;
+	static List<City[]> listOfRoutes = new ArrayList<City[]>();
 	static int ilosc =0;
+	private static double distanceOfTheRoute;
 
 	public Route(City[] listOfCities) {
 
-		this.route = new City[listOfCities.length];
+		this.routeAsArray = new City[listOfCities.length];
 
-		route[0] = listOfCities[0];
+		routeAsArray[0] = listOfCities[0];
 
 		for(int i = 1; i < listOfCities.length; i++){
-			route[i] = new City();
+			routeAsArray[i] = new City();
 		}
 		DEFAULT_CITY = new City();
-		for(City city : route)
+		for(City city : routeAsArray)
 		System.out.println(city);
 		//createListOfRoutes(listOfCities);
 	}
+	
+	
 
 	
 
 	
+	static void calcluateDistanceOfRoute(City[] route){
+		if(route[0].distanceListCloserToKm.containsKey(route[1].name)){
+			System.out.println(route[0].distanceListCloserToKm.get(route[1]));
+		}
+		else{
+			System.out.println("Cos nie pyklo");
+		}
+		
+	}
 	
+	
+	static double getDistanceOfTheRoute() {
+		return distanceOfTheRoute;
+	}
 	
 	
 	@Override
 	public String toString() {
-		return "Route [route=" + Arrays.toString(route);
+		return "Route [route=" + Arrays.toString(routeAsArray);
 	}
 
 
@@ -100,7 +116,7 @@ public class Route implements Comparable<Route> {
 		City[] route = null;
 		//do{
 		for (int i = 1; i < listOfCities.length; i++) {
-			 route = this.route;
+			 route = this.routeAsArray;
 			for (int j = 0; j < listOfCities.length; j++) {
 
 				addCityToRoute(route, i, listOfCities[j]);
