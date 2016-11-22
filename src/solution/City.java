@@ -32,6 +32,16 @@ public class City {
 		this.distanceList =  new LinkedHashMap<String, Double>();
 		this.distanceListCloserToKm =  new LinkedHashMap<String, Double>();
 	}
+	
+	double getDistanceToCity(String nameOfCity){
+		double distance = distanceList.get(nameOfCity);
+		return distance;
+	}
+	
+	double getDistanceToCityInKm(String nameOfCity){
+		double distance = distanceListCloserToKm.get(nameOfCity);
+		return distance;
+	}
 
 	@Override
 	public String toString() {
@@ -54,7 +64,18 @@ public class City {
 	}
 	
 	
-	
+	static void calculateKm(City[] listOfObjects) {
+		for (int i = 0; i < listOfObjects.length; i++) {
+			for (int j = 0; j < listOfObjects.length; j++) {
+				if (i == j) {
+					listOfObjects[i].distanceListCloserToKm.put(null, (double) 0);
+					continue;
+				}
+				listOfObjects[i].distanceListCloserToKm.put(listOfObjects[j].name,
+						calculateEuklidesDistance(listOfObjects[i], listOfObjects[j])*100);
+			}
+		}
+	}
 	
 	
 	@Override
@@ -72,22 +93,6 @@ public class City {
 		return false;
 	}
 
-	static void calculateKm(City[] listOfObjects) {
-		for (int i = 0; i < listOfObjects.length; i++) {
-			for (int j = 0; j < listOfObjects.length; j++) {
-				if (i == j) {
-					listOfObjects[i].distanceListCloserToKm.put(null, (double) 0);
-					continue;
-				}
-				listOfObjects[i].distanceListCloserToKm.put(listOfObjects[j].name,
-						calculateEuklidesDistance(listOfObjects[i], listOfObjects[j])*100);
-			}
-		}
-	}
-	
-	
-	
-	
 	
 	private static double calculateEuklidesDistance(City firstObject, City secondObject) {
 		double sum = 0;
