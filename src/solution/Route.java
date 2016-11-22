@@ -6,8 +6,8 @@ public class Route implements Comparable<Route> {
 
 	final City DEFAULT_CITY;
 	City[] routeAsArray;
-	private static double distanceOfTheRoute = 0;
-	private static double distanceOfTheRouteInKm = 0;
+	private  double distanceOfTheRoute = 0;
+	private  double distanceOfTheRouteInKm = 0;
 
 
 	public Route(City[] listOfCities) {
@@ -21,13 +21,14 @@ public class Route implements Comparable<Route> {
 
 	}
 
-	static void calcluateDistanceOfRoute(City[] cityInRoute) {
+	public void calcluateDistanceOfRoute() {
+		City[] cityInRoute = routeAsArray;
 		calculateDistance(cityInRoute);
 		calculateDistanceInKm(cityInRoute);
 
 	}
 
-	private static void calculateDistance(City[] cityInRoute) {
+	private void calculateDistance(City[] cityInRoute) {
 		for (int i = 0; i < (cityInRoute.length -1); i++) {
 
 			if (cityInRoute[i].distanceList.containsKey(cityInRoute[i+1].name)) {
@@ -43,7 +44,7 @@ public class Route implements Comparable<Route> {
 	}
 	
 	
-	private static void calculateDistanceInKm(City[] cityInRoute) {
+	private void calculateDistanceInKm(City[] cityInRoute) {
 		for (int i = 0; i < (cityInRoute.length -1); i++) {
 
 			if (cityInRoute[i].distanceListCloserToKm.containsKey(cityInRoute[i+1].name)) {

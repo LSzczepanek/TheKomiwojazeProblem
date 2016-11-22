@@ -44,7 +44,7 @@ public class Main {
 		//
 
 		// route.createList(listOfCities);
-		int cityNumber = 0;
+		int cityNumber = 1;
 		List<City> list = Arrays.asList(listOfCities);
 		System.out.println();
 		RouteHelper.permute(list, 1);
@@ -59,18 +59,36 @@ public class Main {
 		System.out.println();
 		double suma;
 		
-		suma = listOfCities[0].getDistanceToCityInKm("Kutno");
-		suma += listOfCities[1].getDistanceToCityInKm("Zgierz");
+		
+		
+		BruteForce.doBruteForce(RouteHelper.listOfRoutes);
+		BFS.doBFS(RouteHelper.listOfRoutes);
+		
+		
+		suma = listOfCities[0].getDistanceToCityInKm("Strykow");
+		suma += listOfCities[6].getDistanceToCityInKm("Zgierz");
+		suma += listOfCities[2].getDistanceToCityInKm("Ozorkow");
+		suma += listOfCities[7].getDistanceToCityInKm("Leczyca");
+		suma += listOfCities[3].getDistanceToCityInKm("Witonia");
+		suma += listOfCities[5].getDistanceToCityInKm("Kutno");
+		suma += listOfCities[1].getDistanceToCityInKm("Piatek");
 		System.out.println("Suma: "+ suma);
 		System.out.println("Pokaz droge");
-		int a = cityNumber;
-		System.out.println(RouteHelper.listOfRoutes.get(a));
-		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRoute());
-		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRouteInKm());
-		Route.calcluateDistanceOfRoute(RouteHelper.listOfRoutes.get(a).routeAsArray);
-		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRoute());
-		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRouteInKm());
 		
+		
+		HeuristicMethod.doHeuristicMethod(listOfCities);
+		
+		
+		DFS.doDFS(RouteHelper.listOfRoutes, listOfCities);
+		
+		
+//		System.out.println(RouteHelper.listOfRoutes.get(a));
+//		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRoute());
+//		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRouteInKm());
+//		Route.calcluateDistanceOfRoute(RouteHelper.listOfRoutes.get(a).routeAsArray);
+//		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRoute());
+//		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRouteInKm());
+//		
 		// System.out.println(Route.listOfRoutes.size());
 	}
 	
