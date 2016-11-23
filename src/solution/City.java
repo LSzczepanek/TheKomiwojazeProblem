@@ -90,7 +90,7 @@ public class City {
 		double tmpDistance;
 		City closestCity = null;
 		List<City> bannedCities = new ArrayList<City>();
-		closestCities = new City[listOfCities.length];
+		closestCities = new City[listOfCities.length-1];
 
 		bannedCities.add(this);
 

@@ -109,7 +109,7 @@ public class Route implements Comparable<Route> {
 	@Override
 	public boolean equals(Object obj) {
 		// TODO Auto-generated method stub
-		return super.equals(obj);
+		return equals((Route) obj);
 	}
 
 	public boolean equals(Route route) {
