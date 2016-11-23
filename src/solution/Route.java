@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Route implements Comparable<Route> {
 
-	final City DEFAULT_CITY;
+	private final City DEFAULT_CITY;
 	City[] routeAsArray;
 	private  double distanceOfTheRoute = 0;
 	private  double distanceOfTheRouteInKm = 0;
@@ -20,7 +20,41 @@ public class Route implements Comparable<Route> {
 		}
 
 	}
+	
+	
+	public Route(){
+		DEFAULT_CITY = Main.listOfCities[0];
+		routeAsArray = new City[8];
+		routeAsArray[0] = DEFAULT_CITY;
+		
+		for(int i = 1; i < Main.listOfCities.length ; i ++){
+			routeAsArray[i] = new City();
+		}
+	}
 
+	
+	void addCityToRoute(City city, int index){
+		this.routeAsArray[index] = city;
+	}
+	
+	
+	/*
+	 * Returns true when CIty is already in Route
+	 * 
+	 */
+	
+	boolean isCityInRoute(City city){
+		for(int i =0; i < this.routeAsArray.length; i ++){
+			if(this.routeAsArray[i].equals(city)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	
+	
+	
 	public void calcluateDistanceOfRoute() {
 		City[] cityInRoute = routeAsArray;
 		calculateDistance(cityInRoute);
