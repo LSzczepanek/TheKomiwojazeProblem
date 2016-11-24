@@ -13,14 +13,15 @@ public class DFS {
 	static void doDFS(List<Route> listOfRoutes, City[] listOfCities) {
 		List<Route> workingList = new ArrayList<Route>(listOfRoutes);
 		List<Route> dfsListOfRoutes = new ArrayList<Route>();
+		List<City> usedCities = new ArrayList<>();
 
 		for (int i = 0; i < listOfCities.length; i++) {
 			listOfCities[i].setClosestCities(listOfCities);
 		}
-
+		int testValue = listOfCities[0].closestCities.length;
 		for (int i = 0; i < workingList.size(); i++) {
 			for (int j = 0; j < 3; j++) {
-				if (workingList.get(i).routeAsArray[1].equals(listOfCities[0].closestCities[j])  && !dfsListOfRoutes.contains(workingList.get(i))) {
+				if (workingList.get(i).routeAsArray[1].equals(listOfCities[0].closestCities[j])) {
 					dfsListOfRoutes.add(workingList.get(i));
 				}
 			}
@@ -30,45 +31,52 @@ public class DFS {
 		dfsListOfRoutes = new ArrayList<Route>();
 
 		for (int i = 0; i < workingList.size(); i++) {
-			for (int j = 0; j < 3; j++) {
-				for (int k = 0; k < 3; k++)
-					if (workingList.get(i).routeAsArray[2].equals(listOfCities[0].closestCities[j].closestCities[k])  && !dfsListOfRoutes.contains(workingList.get(i))) {
-						dfsListOfRoutes.add(workingList.get(i));
+			for (int k = 0; k < testValue; k++)
+				if (workingList.get(i).routeAsArray[2].equals(workingList.get(i).routeAsArray[1].closestCities[k])
+						&& !dfsListOfRoutes.contains(workingList.get(i))) {
+					dfsListOfRoutes.add(workingList.get(i));
+					if (!usedCities.contains(workingList.get(i).routeAsArray[1].closestCities[k])) {
+						usedCities.add(workingList.get(i).routeAsArray[1].closestCities[k]);
 					}
-			}
+					if (usedCities.size() < 3) {
+						testValue = k;
+					}
+				}
 		}
 
-//		workingList = new ArrayList<Route>(dfsListOfRoutes);
-//		dfsListOfRoutes = new ArrayList<Route>();
-//
-//		for (int i = 0; i < workingList.size(); i++) {
-//			for (int j = 0; j < 3; j++) {
-//				for (int k = 0; k < 3; k++)
-//					for (int l = 0; l < 3; l++) {
-//						if (workingList.get(i).routeAsArray[3]
-//								.equals(listOfCities[0].closestCities[j].closestCities[k].closestCities[l]) && !dfsListOfRoutes.contains(workingList.get(i))) {
-//							dfsListOfRoutes.add(workingList.get(i));
-//						}
-//					}
-//			}
-//		}
+		// workingList = new ArrayList<Route>(dfsListOfRoutes);
+		// dfsListOfRoutes = new ArrayList<Route>();
+		//
+		// for (int i = 0; i < workingList.size(); i++) {
+		// for (int j = 0; j < 3; j++) {
+		// for (int k = 0; k < 3; k++)
+		// for (int l = 0; l < 3; l++) {
+		// if (workingList.get(i).routeAsArray[3]
+		// .equals(listOfCities[0].closestCities[j].closestCities[k].closestCities[l])
+		// && !dfsListOfRoutes.contains(workingList.get(i))) {
+		// dfsListOfRoutes.add(workingList.get(i));
+		// }
+		// }
+		// }
+		// }
 
-//		workingList = new ArrayList<Route>(dfsListOfRoutes);
-//		dfsListOfRoutes = new ArrayList<Route>();
-//
-//		for (int i = 0; i < workingList.size(); i++) {
-//			for (int j = 0; j < 3; j++) {
-//				for (int k = 0; k < 3; k++)
-//					for (int l = 0; l < 3; l++) {
-//						for (int m = 0; m < 3; m++) {
-//							if (workingList.get(i).routeAsArray[4].equals(
-//									listOfCities[0].closestCities[j].closestCities[k].closestCities[l].closestCities[m])) {
-//								dfsListOfRoutes.add(workingList.get(i));
-//							}
-//						}
-//					}
-//			}
-//		}
+		// workingList = new ArrayList<Route>(dfsListOfRoutes);
+		// dfsListOfRoutes = new ArrayList<Route>();
+		//
+		// for (int i = 0; i < workingList.size(); i++) {
+		// for (int j = 0; j < 3; j++) {
+		// for (int k = 0; k < 3; k++)
+		// for (int l = 0; l < 3; l++) {
+		// for (int m = 0; m < 3; m++) {
+		// if (workingList.get(i).routeAsArray[4].equals(
+		// listOfCities[0].closestCities[j].closestCities[k].closestCities[l].closestCities[m]))
+		// {
+		// dfsListOfRoutes.add(workingList.get(i));
+		// }
+		// }
+		// }
+		// }
+		// }
 
 		for (Route route : dfsListOfRoutes)
 			System.out.println(route);

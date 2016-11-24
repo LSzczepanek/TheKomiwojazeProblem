@@ -82,6 +82,13 @@ public class Main {
 		DFS.doDFS(RouteHelper.listOfRoutes, listOfCities);
 		
 		
+		for(City city : listOfCities){
+			city.printClosestCities();
+		}
+		
+		RouteHelper.listOfRoutes.get(0).routeAsArray[0].printClosestCities();
+		
+		
 //		System.out.println(RouteHelper.listOfRoutes.get(a));
 //		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRoute());
 //		System.out.println(RouteHelper.listOfRoutes.get(a).getDistanceOfTheRouteInKm());

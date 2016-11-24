@@ -141,4 +141,11 @@ public class City {
 		return Math.sqrt(sum);
 	}
 	
+	
+	
+	public void printClosestCities(){
+		for(City city : closestCities)
+		System.out.print(this.name+": "+city+", ");
+		System.out.println();
+	}
 }
