@@ -67,7 +67,6 @@ public class Route implements Comparable<Route> {
 
 			if (cityInRoute[i].distanceList.containsKey(cityInRoute[i+1].name)) {
 				distanceOfTheRoute += cityInRoute[i].getDistanceToCity(cityInRoute[i+1].name);
-				//distanceOfTheRoute = new BigDecimal(distanceOfTheRoute).setScale(2, RoundingMode.HALF_UP).doubleValue();
 			} else {
 
 				System.out.println("Cos nie pyklo");
@@ -83,7 +82,6 @@ public class Route implements Comparable<Route> {
 
 			if (cityInRoute[i].distanceListCloserToKm.containsKey(cityInRoute[i+1].name)) {
 				distanceOfTheRouteInKm += cityInRoute[i].getDistanceToCityInKm(cityInRoute[i+1].name);
-				//distanceOfTheRouteInKm = new BigDecimal(distanceOfTheRouteInKm).setScale(2, RoundingMode.HALF_UP).doubleValue();
 			} else {
 
 				System.out.println("Cos nie pyklo");
@@ -103,7 +101,16 @@ public class Route implements Comparable<Route> {
 
 	@Override
 	public String toString() {
-		return "Route [" + Arrays.toString(routeAsArray);
+		String result = "";
+		for(int i = 0; i < routeAsArray.length; i ++){
+			result+=routeAsArray[i]+"\n";
+		}
+		return "Route [" + result;//Arrays.toString(routeAsArray);
+	}
+	
+	public String toStringInline() {
+	
+		return "Route [" +Arrays.toString(routeAsArray);
 	}
 
 	@Override
@@ -117,8 +124,7 @@ public class Route implements Comparable<Route> {
 		return this.toString().equals(route.toString());
 	}
 
-		// do usuniecia z czasem
-
+	
 	int getCity(int i) {
 		return 0;
 	}

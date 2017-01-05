@@ -8,14 +8,15 @@ public class RouteHelper {
 	static List<Route> listOfRoutes = new ArrayList<Route>();
 	static int ilosc = 0;
 
-	public void print() {
+	public static void print() {
 		int i = 0;
 		for (Route routes : listOfRoutes) {
 			System.out.println();
-			System.out.println(i + " : " + routes);
+			System.out.println(i + " : " + routes.toStringInline());
 			i++;
 			
 		}
+		System.out.println();
 	}
 
 	static void permute(List<City> list, int k) {
@@ -27,12 +28,8 @@ public class RouteHelper {
 		if (k == list.size() - 1) {
 
 			listOfRoutes.add(new Route((City[]) list.toArray()));
-			// System.out.println(ilosc+":
-			// "+java.util.Arrays.toString(list.toArray()));
-			// System.out.println("Ilosc: "+ ilosc);
 			ilosc++;
 		}
-		// System.out.println("Ilosc obiektow: "+list);
 	}
 
 }
